@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import ReactDOM from 'react-dom';
+import { BrowserRouter , useNavigate  } from 'react-router-dom';
 import { Formik, Field, Form } from 'formik';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './App.css'
 function App() {
   const navigate = useNavigate();
+  const handleClick = () => navigate('/home');
   return (
     <>
     <Formik
@@ -28,7 +31,9 @@ function App() {
             {/* <label htmlFor="email">Email</label> */}
             {/* <p className="absolute w-[248px] h-[19px] -top-px left-[10px] [font-family:'Georgia-Regular',Helvetica] font-normal text-[#aab2bb] text-[16px] tracking-[0.30px] leading-[normal] whitespace-nowrap">Email address</p> */}
               
-              <Field className="absolute w-[248px] h-[19px] -top-px left-[10px] [font-family:'Georgia-Regular',Helvetica] font-normal text-[#aab2bb] text-[16px] tracking-[0.30px] leading-[normal] whitespace-nowrap"
+              <Field 
+                className="absolute w-[248px] h-[19px] -top-px left-[10px] font-normal text-gray-600 text-[16px] tracking-[0.30px] leading-[normal] whitespace-nowrap bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+              // className="absolute w-[248px] h-[19px] -top-px left-[10px] [font-family:'Georgia-Regular',Helvetica] font-normal text-[#aab2bb] text-[16px] tracking-[0.30px] leading-[normal] whitespace-nowrap bg-white placeholder-gray-50 focus:outline-none focus:ring-2 focus:ring-white"
                 id="email"
                 name="email"
                 placeholder="Email address"
@@ -36,7 +41,6 @@ function App() {
               />
 
             {/* <Loginform/> */}
-            
             {/* <form onSubmit={handleSubmit(onSubmit)}>
             <input
         type="text" className="absolute w-[248px] h-[19px] -top-px left-[10px] [font-family:'Georgia-Regular',Helvetica] font-normal text-[#aab2bb] text-[16px] tracking-[0.30px] leading-[normal] whitespace-nowrap"
@@ -48,7 +52,7 @@ function App() {
 
             </div>
           </div>
-          <button onClick={() => navigate('/home')} 
+          <button type='submit' onClick={handleClick}  
           className="all-[unset] box-border top-[272px] bg-[#159aff] rounded-[4px] shadow-[0px_2px_2px_#ffffff] absolute w-[398px] h-[44px] left-[50px]">
             <div className="absolute w-[34px] h-[16px] top-[13px] left-[182px] [font-family:'Georgia-Bold',Helvetica] font-bold text-white text-[13.3px] text-center tracking-[0.50px] leading-[normal] whitespace-nowrap">
               Next
@@ -82,10 +86,5 @@ function App() {
     </>
   )
 }
-ReactDOM.render(
-  <BrowserRouter>
-      <App />
-  </BrowserRouter>,
-  document.getElementById('root')
-);
+
 export default App
